@@ -16,6 +16,8 @@ def leer_json_archivo(nombre_archivo):
 def registro_gym():
     cliente_registrados = request.json
     clientes = leer_json_archivo("clientes_gym.json")
+    
+   
 
     cliente_presente = {}
 
@@ -26,8 +28,18 @@ def registro_gym():
         ingreso_hoy = clientes[numero_cedula]["intentos"]
         nombre_cliente = clientes[numero_cedula]["nombre"]
         estado_cliente = clientes[numero_cedula]["estado"]
+        huella_digital=cliente_registrados["huella"]
+        
+        
         cliente_presente["nombre"] = nombre_cliente
+        
+        
+       
         # validar huella
+        if  "huella" not in  cliente_registrados or not huella_digital==clientes[numero_cedula]["huella"]:
+             return Response(json.dumps({}), status=400, mimetype='application/json')
+             
+            
         if estado_cliente > 0:
             cliente_presente["estado"] = estado_cliente
             cliente_presente["intentos"] = ingreso_hoy + 1
