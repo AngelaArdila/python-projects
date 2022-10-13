@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request,Response
 import json
 
 # nombre, cedula, pagoMesActual, huella
@@ -30,9 +30,9 @@ def registro_gym():
           
           
     elif  cliente_registrados["cedula"]=="":
-        return "ingrese su numero de cedula"
+         return Response(json.dumps({}), status=400, mimetype='application/json')
     else:
-        return"no estas registrado"
+        return Response(json.dumps({}), status=400, mimetype='application/json')
     if estado_cliente > 0:
         cliente_presente["estado"]= estado_cliente 
         cliente_presente["intentos"] = ingreso_hoy + 1
