@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.pust("/registro_gym")
 def hello_world():
     return "<p>Hello, World!</p>"
 
