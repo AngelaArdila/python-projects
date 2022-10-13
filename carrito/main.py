@@ -14,8 +14,7 @@ def productos():
     cantidad_producto = 0
     lista_productos_comprados = []
 
-    with open("productos.json") as leer_productos:
-        productos_tienda = json.load(leer_productos)
+    productos_tienda = leer_json_archivo("productos.json")
 
     for i in compras_cliente:
         codigo_producto = i["codigo"]
@@ -51,6 +50,10 @@ def productos():
 
     print(compras_cliente)
     return jsonify(factura_compra)
+
+def leer_json_archivo(nombre_archivo):
+    with open(nombre_archivo) as leer_productos:
+        return json.load(leer_productos)
    
     
 
