@@ -1,0 +1,6 @@
+cedula,nombre_comprador,codigo_articulo,nombre_articulo,peso_lb
+0705291441,bryan andres,001,mora kg,20
+0705291441,bryan andres,002,sandia kg,50
+0705291442,angela cristina,001,mora kg,30
+0705291441,bryan andres,002,sandia kg,60
+0705291442,angela cristina,003,papaya kg,2
