@@ -1,0 +1,13 @@
+{
+    "productos": [
+        {
+            "codigo": "00001",
+            "name": "mora",
+            "total": 10, 
+        }
+    ],
+    "total": {
+        "numero_productos": 0,
+        "total": 0
+    }
+}

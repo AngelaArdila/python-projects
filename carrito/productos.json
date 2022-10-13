@@ -1,0 +1,20 @@
+{
+    "00001": {
+        "codigo": "00001",
+        "name": "mora",
+        "precio_unidad": 1.5,
+        "descuento": 0.10
+    },
+    "00002": {
+        "codigo": "00002",
+        "name": "limon",
+        "precio_unidad": 1,
+        "descuento": 0.10
+    },
+    "00003": {
+        "codigo": "00003",
+        "name": "pera",
+        "precio_unidad": 2,
+        "descuento": 0.10
+    }
+}
