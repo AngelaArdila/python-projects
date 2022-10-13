@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request,Response
+from flask import Flask, jsonify, request, Response
 import json
 
 # nombre, cedula, pagoMesActual, huella
@@ -6,42 +6,38 @@ import json
 
 app = Flask(__name__)
 
+
 def leer_json_archivo(nombre_archivo):
     with open(nombre_archivo) as leer_productos:
         return json.load(leer_productos)
 
+
 @app.post("/registro_gym")
 def registro_gym():
-    cliente_registrados= request.json
+    cliente_registrados = request.json
     clientes = leer_json_archivo("clientes_gym.json")
-    numero_cedula=cliente_registrados["cedula"]
-    ingreso_hoy=clientes[numero_cedula]["intentos"]
-    nombre_cliente=clientes[numero_cedula]["nombre"]
-   
-   
-    cliente_presente={}
-    
-   
-    
-    if cliente_registrados["cedula"] in clientes and cliente_registrados["cedula"]== numero_cedula :
-          estado_cliente = clientes[numero_cedula]["estado"]
-          cliente_presente["nombre"]=nombre_cliente
-          
-          
-          
-    elif  cliente_registrados["cedula"]=="":
-         return Response(json.dumps({}), status=400, mimetype='application/json')
-    else:
+
+    cliente_presente = {}
+
+    if "cedula" not in cliente_registrados or cliente_registrados["cedula"] not in clientes:
         return Response(json.dumps({}), status=400, mimetype='application/json')
-    if estado_cliente > 0:
-        cliente_presente["estado"]= estado_cliente 
-        cliente_presente["intentos"] = ingreso_hoy + 1
+    elif cliente_registrados["cedula"] in clientes:
+        numero_cedula = cliente_registrados["cedula"]
+        ingreso_hoy = clientes[numero_cedula]["intentos"]
+        nombre_cliente = clientes[numero_cedula]["nombre"]
+        estado_cliente = clientes[numero_cedula]["estado"]
+        cliente_presente["nombre"] = nombre_cliente
+        # validar huella
+        if estado_cliente > 0:
+            cliente_presente["estado"] = estado_cliente
+            cliente_presente["intentos"] = ingreso_hoy + 1
+        else:
+            print("inscribete ya")
         
-        print(ingreso_hoy)
-    else:
-        print("inscribete ya")
-    print(cliente_presente)
-    
-    return jsonify ({"cliente":cliente_presente})
+        return Response(json.dumps(cliente_presente), status=200, mimetype='application/json')
+
+    return Response(json.dumps({}), status=400, mimetype='application/json')
+
+
 if "main" in __name__:
     app.run()

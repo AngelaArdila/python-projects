@@ -1,18 +1,23 @@
-{"09654":{
-    "nombre": "Bryan",
-    "estado": 1,
-    "intentos": 0,
-    "huella":"ggfhgh",
-    "cedula":"09654"
-},"09424":{
-    "nombre": "Abril",
-    "estado": 0,
-    "intentos": 0,
-    "huella":"gghjfgn",
-    "cedula":"09424"
-},"09563":{
+{
+    "09654": {
+        "nombre": "Bryan",
+        "estado": 1,
+        "intentos": 0,
+        "huella": "ggfhgh",
+        "cedula": "09654"
+    },
+    "09424": {
+        "nombre": "Abril",
+        "estado": 0,
+        "intentos": 0,
+        "huella": "gghjfgn",
+        "cedula": "09424"
+    },
+    "09563": {
         "nombre": "Mali",
         "estado": 1,
         "intentos": 0,
-        "huella":"ytuyh",
-        "cedula":"09563"}}
+        "huella": "ytuyh",
+        "cedula": "09563"
+    }
+}
